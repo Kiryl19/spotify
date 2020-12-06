@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <header>
+        <h3>{{ user.USERNAME_FIELD }}</h3>
+        <a href="{% url 'logout' %}">Выйти</a>
+    </header>
+    <main>
+        <h1>{{ playlist_name }}</h1>
+        <table>
+            {% for song in playlist_songs %}
+                <tr>
+                    <td>{{ song.name }} {{ song.artist }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </main>
+</body>
+</html>
