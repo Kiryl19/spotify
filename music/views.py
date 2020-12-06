@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
-
 from authorization import models as modelsauth
 from . import models as modelsmusic
 from .forms import UserPlaylistForm
@@ -11,14 +10,17 @@ def listuserplaylist(request):
     listuserplaylist = modelsmusic.UserPlaylist.objects.filter(profile=profile)
     return render(request, 'listuserplaylist.html', {'listuserplaylist': listuserplaylist})
 
+
 def listpublicplaylist(request):
     profile = modelsauth.Profile.objects.get(user=request.user)
     listpublicplaylist = modelsmusic.PublicPlaylist.objects.filter(profile=profile)
     return render(request, 'listpublicplaylist.html', {'listpublicplaylist': listpublicplaylist})
 
+
 def listalbum(request):
     listalbum = modelsmusic.Album.objects.all()
     return render(request, 'listalbum.html', {'listalbum': listalbum})
+
 
 class PlaylistCreateView(TemplateView):
     template_name = 'music/crateplaylist.html'
