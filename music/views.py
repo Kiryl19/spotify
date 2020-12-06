@@ -3,12 +3,6 @@ from authorization import models as auth_models
 from . import models as music_models
 
 
-def list_user_playlists(request):
-    profile = auth_models.Profile.objects.get(user=request.user)
-    playlists = music_models.UserPlaylist.objects.filter(profile=profile)
-    return render(request, 'playlists_list.html', context={'playlists': playlists})
-
-
 def list_all_songs_in_playlist(request, playlist):
     profile = auth_models.Profile.objects.get(user=request.user)
     playlist = music_models.UserPlaylist.objects.get(name=playlist, profile=profile)
