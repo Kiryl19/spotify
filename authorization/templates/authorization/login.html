@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+
+        img {
+width: 90px;
+height: 90px;
+border-radius: 50%;
+ }
+    </style>
+</head>
+<body>
+ {% if user.is_authenticated %}
+        <h2>Hello {{ user.username }}</h2>
+ <img src="{{ user.profile.image.url }}">
+  <a href= "{% url 'logout' %}">выйти</a>
+ <a href= "{% url 'profile' %}">добавить информацию о себе</a>
+    {% else %}
+<form action="{% url 'login' %}" method="POST" >
+  {% csrf_token %}
+    <a href= "{% url 'registration' %}">зарегистрироваться</a>
+  {{ login_form.as_p }}
+  <input type="submit">
+</form>
+ {% endif %}
+</body>
+</html>
