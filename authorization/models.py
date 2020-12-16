@@ -1,9 +1,9 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser
+from django.contrib.auth.models import AbstractUser
 from django.contrib.auth.models import UserManager
 
 
-class User(AbstractBaseUser):
+class User(AbstractUser):
     username = models.CharField(max_length=40, unique=True)
     password = models.CharField('password', max_length=128)
     email = models.EmailField(max_length=40, unique=True)

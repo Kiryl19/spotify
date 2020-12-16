@@ -59,5 +59,6 @@ class UserPlaylist(models.Model):
 class PublicPlaylist(models.Model):
     name = models.CharField(verbose_name='Название плейлиста', max_length=250)
     profile = models.ManyToManyField('authorization.Profile', blank=True, null=True)
+    songs = models.ManyToManyField(Song, blank=True, null=True)
     image = models.ImageField(upload_to='images/public_playlists', default=DEFAULT_IMAGE)
     songs = models.ManyToManyField(Song, blank=True, null=True)
